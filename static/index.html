@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Relé</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>FM Aspen</h2>
+
+<iframe src="https://fmaspen.com/" name="iframe_a" height="300px" width="100%" title="Iframe Example"></iframe>
+
+<p><a href="https://www.w3schools.com" target="iframe_a">W3Schools.com</a></p>
+
+<p>When the target attribute of a link matches the name of an iframe, the link will open in the iframe.</p>
+
+<button onclick="controlRelay('on')"><b>ON</b></button>
+<button onclick="controlRelay('off')"><b>OFF</b></button>
+
+<!-- Mensaje de estado -->
+<p id="status">Estado: Cargando...</p>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
