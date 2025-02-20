@@ -3,25 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de Relé</title>
+    <title>Control de LDR con WebSocket</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
 </head>
 <body>
 
 <h2>FM Aspen</h2>
 
-<iframe src="https://fmaspen.com/" name="iframe_a" height="300px" width="100%" title="Iframe Example"></iframe>
+<iframe src="https://fmaspen.com/" name="iframe_a" height="300px" width="100%" title="Iframe Example" aria-label="Contenido de FM Aspen"></iframe>
 
-<p><a href="https://www.w3schools.com" target="iframe_a">W3Schools.com</a></p>
+<p>
+    <a href="https://www.w3schools.com" target="iframe_a" aria-label="Abrir W3Schools en el iframe">W3Schools.com</a>
+</p>
 
 <p>When the target attribute of a link matches the name of an iframe, the link will open in the iframe.</p>
+<div>
+<!-- Botones ON/OFF para el relé -->
 
-<button onclick="controlRelay('on')"><b>ON</b></button>
-<button onclick="controlRelay('off')"><b>OFF</b></button>
+<button class="on" onclick="controlRelay('on')" aria-label="Encender relé">
+    <b>ON</b>
+</button>
+
+<button class="off" onclick="controlRelay('off')" aria-label="Apagar relé">
+    <b>OFF</b>
+</button>
 
 <!-- Mensaje de estado -->
 <p id="status">Estado: Cargando...</p>
+</div>
 
+<div>
+<!-- Botones para Pull-Up y Pull-Down -->
+
+<button id="button-pull-up" class="pullup" onclick="controlPullUp()" aria-label="Activar Pull-Up">
+  <span>No presionado</span>
+</button>
+<p>Pull-Up</p>
+</div>
+
+<div>
+<button id="button-pull-down" class="pulldown" onclick="controlPullDown()" aria-label="Activar Pull-Down">
+  <span>No presionado</span>
+</button>
+<p>Pull-Up</p>
+</div>
+
+<div class="container">
+    <aside>
+        <h2> Real Time Values </h2>
+        <textarea
+            id="sensor-values"
+            name=""
+            class="values"
+            cols="10"
+            rows="20"
+            aria-label="Valores de sensor en tiempo real">
+        </textarea>
+     </aside>
+     
+     <main class="chart">
+         <h2> LDR/Pmhotoresistor </h2>
+         <div class="wrapper">
+             <div id="sensor-chart" class="sensor-chart"></div>
+         </div>
+     </main>
+</div>
+         
 <script src="/static/app.js"></script>
 </body>
 </html>

@@ -1,17 +1,191 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
+:root {
+  --color-white: #fff;
+  --color-dark-variant: #f3f5f8;
+  --border-radius-1: 0.4rem;
+  --color-on: #4CAF50; /* Verde para ON */
+  --color-off: #f44336; /* Rojo para OFF */
+  --color-pullup: #2196F3; /* Azul para Pull-Up */
+  --color-pulldown: #FF9800; /* Naranja para Pull-Down */
+  --color-hover: #45a049; /* Verde más oscuro al hacer hover */
+  --font-size-button: 20px;
+  --button-size: 120px; /* Tamaño de los botones */
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    margin: 10px;
-    cursor: pointer;
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  background: var(--color-dark-variant);
+  margin-top: 50px;
+}
+
+h1 {
+  margin-top: 0.4rem;
+  margin-left: 1.6rem;
 }
 
 #status {
-    font-size: 20px;
-    margin-top: 20px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.container {
+  display: grid;
+  width: 96%;
+  margin: 0 auto;
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto;
+}
+
+aside {
+  margin-top: 1.4rem;
+  height: 100vh;
+  background: var(--color-white);
+  border-radius: var(--border-radius-1);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.values {
+  text-align: center;
+  resize: none;
+  height: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+main {
+  margin-top: 1.4rem;
+  background: var(--color-white);
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  width: var(--button-size);
+  height: var(--button-size);
+  padding: 20px;
+  font-size: var(--font-size-button);
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%; /* Botones redondeados */
+  border: none;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Botones de ON/OFF para el relé */
+button.on {
+  background-color: var(--color-on); /* Verde para el estado ON */
+}
+
+button.off {
+  background-color: var(--color-off); /* Rojo para el estado OFF */
+}
+
+/* Efecto hover para botones de ON/OFF */
+button.on:hover, button.off:hover {
+  background-color: var(--color-hover);
+  transform: scale(1.1);
+}
+
+button.off:hover {
+  background-color: #d9534f;  /* Color rojo para el botón OFF al hacer hover */
+  color: #fff;  /* Color de texto blanco */
+}
+
+/* Estilo para los botones Pull-Up y Pull-Down */
+button.pullup, button.pulldown {
+  font-size: var(--font-size-button);
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  position: relative;
+}
+
+/* Botón Pull-Up */
+button.pullup {
+  background-color: var(--color-pullup);
+}
+
+button.pullup:hover {
+  background-color: #1976d2; /* Azul más oscuro para el Pull-Up al hacer hover */
+}
+
+button.pullup:active {
+  background-color: #1565c0; /* Cuando se presiona */
+}
+
+/* Botón Pull-Down */
+button.pulldown {
+  background-color: var(--color-pulldown);
+}
+
+button.pulldown:hover {
+  background-color: #fb8c00; /* Naranja más oscuro para el Pull-Down al hacer hover */
+}
+
+/* Cambiar color cuando se presionan */
+button.pullup.active {
+  background-color: #1976d2; /* Azul más oscuro cuando se presiona */
+}
+
+button.pulldown.active {
+  background-color: #fb8c00; /* Naranja más oscuro cuando se presiona */
+}
+
+/* Texto cuando está presionado */
+button.pullup.active span, button.pulldown.active span {
+  color: yellow; /* Cambiar texto a amarillo cuando está presionado */
+}
+
+/* Estilo de texto dentro de los botones */
+button.pullup span, button.pulldown span {
+  position: absolute;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Efecto visual de escala cuando se presiona el botón */
+button.pullup:active, button.pulldown:active {
+  transform: scale(0.95);
+}
+
+/* Enfoque visual para accesibilidad */
+button:focus {
+  outline: 3px solid #ff9800; /* Naranja claro para resaltar cuando el botón tiene el foco */
+  outline-offset: 2px;
 }
